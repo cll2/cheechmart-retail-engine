@@ -1,0 +1,11 @@
+# Ignore local config
+/src/dbconnect.local.php
+
+# Ignore OS/editor temp files
+*~
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
