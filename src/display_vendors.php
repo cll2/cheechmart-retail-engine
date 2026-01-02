@@ -59,7 +59,7 @@ if ($first) {
 pg_close($conn);
 ?>
 
-<p><a href="index.html">Back to home</a></p>
+<p><a href="../public/index.html">Back to home</a></p>
 
 </body>
 </html>
