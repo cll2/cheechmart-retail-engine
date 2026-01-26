@@ -72,8 +72,8 @@ pg_close($conn);
 ?>
 
 <p>
-<a href="create_deal.php">Add New Deal</a>
-<a href="../public/index.html">Home</a>
+<a href="index.php?page=create_deal">Add New Deal</a>
+<a href="index.php?page=">Home</a>
 
 </p>
 

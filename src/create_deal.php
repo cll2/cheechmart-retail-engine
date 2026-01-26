@@ -8,7 +8,7 @@ if (!$vendor_result) {
     exit;
 }
 
-// Fetch items for dropdown (assuming you have an 'items' table)
+// Fetch items for dropdown
 $item_result = pg_query($conn, "SELECT item_id, description FROM items");
 if (!$item_result) {
     echo "<p>Failed to fetch items: " . pg_last_error($conn) . "</p>";
@@ -26,9 +26,10 @@ if (!$item_result) {
 
 <h1>Create a New Deal</h1>
 
-<form method="POST" action="add_deal.php">
+<form method="POST" action="index.php?page=add_deal">
     <label for="vendor">Vendor:</label>
     <select name="vendor_id" id="vendor" required>
+        <option value="">--Select Vendor--</option>
         <?php
         while ($vendor = pg_fetch_assoc($vendor_result)) {
             echo "<option value='" . $vendor['vendor_id'] . "'>" . htmlspecialchars($vendor['name']) . "</option>";
@@ -38,6 +39,7 @@ if (!$item_result) {
 
     <label for="item">Item:</label>
     <select name="item_id" id="item" required>
+        <option value="">--Select Item--</option>
         <?php
         while ($item = pg_fetch_assoc($item_result)) {
             echo "<option value='" . $item['item_id'] . "'>" . htmlspecialchars($item['description']) . "</option>";
@@ -60,9 +62,12 @@ if (!$item_result) {
     <button type="submit">Add Deal</button>
 </form>
 
-<p><a href="display_deals.php">View All Deals</a></p>
+<p><a href="index.php?page=display_deals">View All Deals</a></p>
+<p><a href="index.php?page=">Back to Home</a></p>
 
-<?php pg_close($conn); ?>
+<?php
+pg_close($conn);
+?>
 
 </body>
 </html>
